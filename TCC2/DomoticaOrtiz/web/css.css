@@ -1,0 +1,179 @@
+/* 
+    Document   : css
+    Created on : 06/05/2014, 01:52:28
+    Author     : Ortiz
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+   
+    	
+/* CSS por Gabriel Ortiz */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: verdana;
+	background-color: #efefef;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font: 8pt Verdana;
+        background-image: url("imagens/bg1.png");
+}
+
+.centralizador {
+	left: 50%;
+	width: 900px;
+	margin: 0 auto;
+}
+.header {
+	width: 950px;
+	height: 145px;
+	margin-top: 5px;
+	background-color: white;
+	text-align: left;
+	padding: 5px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding-top: 10px;
+	border: 1px solid #A3CFEC;
+	border-bottom: 0px;
+}
+.drop_menu {
+	background-image: url("imagens/mb.png");
+	border: 1px solid #A3CFEC;
+	border-radius: 5px;
+	list-style-type:none;
+	height:34px;
+}
+.drop_menu li { 
+	float:left; 
+}
+.drop_menu li a {
+	padding:9px 20px;
+	display:block;
+	color:#fff;
+	text-decoration:none;
+	font:12px arial, verdana, sans-serif;
+}
+/* Submenu */
+.drop_menu ul {
+	position:absolute;
+	left:-9999px;
+	top:-9999px;
+	list-style-type:none;
+}
+.drop_menu li:hover { 
+	position:relative; 
+	background:#006699; 
+}
+.drop_menu li:hover ul {
+	left:0px;
+	top:30px;
+	background:#006699;
+	padding:0px;
+}
+.drop_menu li:hover ul li a {
+	padding:5px;
+	display:block;
+	width:168px;
+	text-indent:15px;
+	text-align: center;
+	background-color:#006699;
+}
+.drop_menu li:hover ul li a:hover { 
+	background:#000033; 
+}
+
+#corpo {
+	background: #F8F8F8 ;
+	border: 1px solid #A3CFEC;
+	border-top: 0px;
+}
+
+.conteudo{
+	text-align:center;
+	font-size: 15px;
+	font-family: "Century Gothic";
+}
+
+
+#tenho{
+	float: left;
+	width: 447px;
+	border: 1px solid #A3CFEC;
+	right: 15px;
+        background-color:#efefef;
+}
+
+
+#quero{
+	float: right;
+	width: 447px;
+	border: 1px solid #A3CFEC;
+        background-color:#efefef;
+}
+
+#inicial{
+	border: 1px solid #A3CFEC;
+	width: 899px;
+	
+}
+
+
+
+
+#rodape {
+	width: 900px;
+	min-height: 110px;
+	margin-top: 0px;
+	clear: both;
+	border: 1px solid #A3CFEC;
+	border-radius: 5px;
+	background-image: url("imagens/rodape.png");
+	color: #fff;
+	font-size: 9pt;
+	line-height: 11pt;
+}
+
+#rodape_baixo {
+	width: 830px;
+	min-height: 80px;
+	padding: 30px;
+	clear: both;
+}
+
+#endereco {
+	float: left;
+}
+
+
+#top {
+	width: 900px;
+	min-height: 153px;
+	margin-top: 0px;
+	clear: both;
+	border: 1px solid #A3CFEC;
+	border-radius: 5px;
+	background-image: url("imagens/top.png");
+	color: #fff;
+	font-size: 9pt;
+	line-height: 11pt;
+}
+
+hr {
+width: 80%; /* coloque a largura desejada */
+height: 2px; /* altura varia, no seu caso é 1px */
+border: none; /* eu prefiro usar o none ao 0 */
+border-top: 1px solid #008888; /* no seu caso mude a cor */
+color: #FFFFFF; /* a cor de fundo do layer pra deixar "invisivel" a HR */
+}
+
+
+.centralizado {
+    margin: 0 auto !important;
+    float: none !important;
+    text-align: center;
+      
+}
