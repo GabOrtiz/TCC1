@@ -4,7 +4,6 @@
  */
 package Servlets;
 
-import Classes.Usuario;
 import DAO.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,14 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 /**
  *
  * @author Ortiz
  */
-@WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
-public class ServletLogin extends HttpServlet {
-
+@WebServlet(name = "ServletSair", urlPatterns = {"/ServletSair"})
+public class ServletSair extends HttpServlet{
+    
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -33,46 +31,22 @@ public class ServletLogin extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        UsuarioDAO UDAO = new UsuarioDAO();
         
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
+        HttpSession sessao = request.getSession();
+        sessao.invalidate();
         
-        
-        if(email==null || senha==null){
-            response.sendRedirect("./erro.jsp");
-        }
-        
-        
-        else if(UDAO.buscar(email, senha).email.equalsIgnoreCase(email) && UDAO.buscar(email, senha).getSenha().equalsIgnoreCase(senha) ){
-            HttpSession sessao = request.getSession(true);
-            //JOptionPane.showMessageDialog(null, UDAO.buscar(email, senha));
-            
-            System.out.print(UDAO.buscar(email,senha));
-            //sessao.setAttribute("Usuario", UDAO.buscar(email, senha));
-            Usuario u = UDAO.buscar(email, senha);
-            
-            sessao.setAttribute("id", u.getId());
-            sessao.setAttribute("nome", u.getNome());
-            sessao.setAttribute("email", u.getEmail());
-           
-            //response.sendRedirect("./teste.jsp");
-            response.sendRedirect("./inicial.jsp");
-        }
-        else{
-            PrintWriter out = response.getWriter();
-            out.println("Username ou senha inválido!");
-            //request.getRequestDispatcher("./erro.jsp").include(request, response);
-            response.sendRedirect("./erro.jsp");
-        }
+        request.getRequestDispatcher("./inicial.jsp").include(request, response);
         
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
+    
+    
+ // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP
      * <code>GET</code> method.

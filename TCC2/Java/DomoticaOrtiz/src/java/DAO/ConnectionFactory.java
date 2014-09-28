@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class ConnectionFactory {
 
     public static Connection getConnection() {
-        String url = "jdbc:mysql://localhost:3306/ppi1";
+        String url = "jdbc:mysql://localhost:3306/DomoticaOrtiz";
         String login = "root";
         String senha = "";
         try {

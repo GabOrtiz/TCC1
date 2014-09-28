@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 // "/sala.jsp/*"
 // "/dormum.jsp/*"
 // "/plataforma.jsp/*",
-@WebFilter(filterName = "FiltroAcesso", urlPatterns = {})
+@WebFilter(filterName = "FiltroAcesso", urlPatterns = {"/sala.jsp/*","/dormum.jsp/*", "/dormdois.jsp/*", "/cozinha.jsp/*" })
 public class FiltroAcesso implements Filter {
 
     private static final boolean debug = true;
@@ -49,7 +49,7 @@ public class FiltroAcesso implements Filter {
             chain.doFilter(request, response);
         }
         else{
-            resp.sendRedirect(req.getContextPath()+"/erro.jsp");
+            resp.sendRedirect(req.getContextPath()+"/filtromsg.jsp");
         }
     }
     

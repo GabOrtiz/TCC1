@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Criptografia.Cryptography;
+import Criptografia.CryptographyGeneric;
+import Criptografia.CryptographySHA512;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -40,9 +44,9 @@ public class UsuarioDAO extends DaoBD{
         } finally {
             fechar();
         }
-        return usuarios;     
-                
+        return usuarios;         
     }
+    
     
     // BUSCA POR ID
     public List<Usuario> buscarID(int id){
@@ -67,8 +71,7 @@ public class UsuarioDAO extends DaoBD{
         } finally {
             fechar();
         }
-        return usuarios;
-                
+        return usuarios;       
     }
     
 
@@ -96,8 +99,25 @@ public class UsuarioDAO extends DaoBD{
         } finally {
             fechar();
         }
-        return u;   
-                
+        return u;          
     }
     
+    
+    public void inserir(String nome, String email, String senha){
+        Cryptography cryptography;
+        conectar("INSERT INTO usuario( nome, email, senha)VALUES (?, ?, ?)");
+        //Criptografia usando MD5
+        //cryptography = new CryptographySHA512();
+        try {
+            //String senhacrip = cryptography.encrypt(senha);
+            comando.setString(1, nome);
+            comando.setString(2, email);
+            comando.setString(3, senha);
+            comando.execute();
+        } catch (SQLException ex){
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }finally{
+            fechar();
+        }
+    }
 }

@@ -8,11 +8,14 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,10 +39,15 @@ public class ServletSala extends HttpServlet {
     //abrindo comunicacao serial 
     SerialInterface si = new SerialInterface("COM5", 9600);
     
-    String t,u = "";
+    String tu, t,u = "";
+    StringBuilder sb = new StringBuilder();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession sessao = request.getSession();
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         
         System.out.println("entrou na servlet");
@@ -147,7 +155,43 @@ public class ServletSala extends HttpServlet {
             response.sendRedirect("./sala.jsp");
         }
          
-         
+         if(request.getParameter("sala").equalsIgnoreCase("tu")){
+            System.out.println("CAIU EM Temperatura e Umidade");    
+                        
+                
+                sb = new StringBuilder();
+                //Comando para ler informação do DHT11               
+                        byte[] data = new byte[1];
+                        data[0] = 't';
+                        try {
+                                //enviando dados via porta serial
+                                si.write(data);
+                                //dormindo por 1 segundo
+                                Thread.sleep(1000);
+                                
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        } catch (InterruptedException e) {
+                                e.printStackTrace();
+                        }
+                        
+                        
+                        
+                        //registrando action de leitura que irá simplesmente printar os dados lidos
+                si.read( new SerialReadAction() {                     
+                        public void read(byte b) {                               
+                                //System.out.print((char)b);
+                                sb.append((char)b);
+                        }                
+                });
+                
+               System.out.println(sb.toString());
+               String tu = sb.toString();
+               
+               sessao.setAttribute("tu", tu);
+
+            response.sendRedirect("./sala.jsp");
+        }
          
     }
 

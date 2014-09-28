@@ -4,7 +4,9 @@
     Author     : Ortiz
 --%>
 
+<%@page import="Servlets.SerialReadAction"%>
 <%@page import="Servlets.SerialInterface"%>
+<%@page import="Servlets.ServletSala"%>
 <%@page import="javax.sql.rowset.serial.SerialArray"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,11 +21,14 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css.css">
         
-        <title>Domotica</title>
+        <% HttpSession sessao = request.getSession(true); %>
+ 
+        
+        <title>Domotica Ortiz</title>
     </head>
-    
+
     <body>
-    
+
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-12 column centralizado">
@@ -37,38 +42,44 @@
                 </div>
             </div>
             <div class="row clearfix">
-                
-                
+
+
                 <div class="col-md-12 centralizado">                    
-                    
+
                     <form action="./ServletSala">
-                    <button type="submit" class="btn btn-primary btn-lg" name="sala" value="lum">Lâmpada 1</button> 
+                        <button type="submit" class="btn btn-primary btn-lg" name="sala" value="lum">Lâmpada 1</button> 
                     </form>
                     <hr>
-                    
+                        
                     <form action="./ServletSala">                    
-                    <button type="submit" class="btn btn-primary btn-lg" name="sala" value="ldois">Lâmpada 2</button> 
+                        <button type="submit" class="btn btn-primary btn-lg" name="sala" value="ldois">Lâmpada 2</button> 
                     </form>                   
                     <hr>
-                    
+                        
                     <form action="./ServletSala">
-                    <button type="submit" class="btn btn-primary btn-lg" name="sala" value="ac">Condicionador de ar</button> 
+                        <button type="submit" class="btn btn-primary btn-lg" name="sala" value="ac">Condicionador de ar</button> 
                     </form>
                     <hr>
-                    
+                        
                     <form action="./ServletSala">
-                    <button type="submit" class="btn btn-primary btn-lg" name="sala" value="tp">Trava Porta</button> 
-                    </form
-                    
+                        <button type="submit" class="btn btn-primary btn-lg" name="sala" value="tp">Trava Porta</button> 
+                    </form>
+                    <hr>
+                        
+                    <form action="./ServletSala">
+                        <button type="submit" class="btn btn-primary btn-lg" name="sala" value="tu">Temperatura/Umidade</button>
+                        <br>
+                        <%=session.getAttribute("tu")%>
+                    </form>
+                        
                 </div>
             </div>
-        </div>
+        
+
         
         
         
-        
-        
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

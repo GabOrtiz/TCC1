@@ -34,24 +34,66 @@
                     </ul>
                 </div>
             </div>
-            <div class="row clearfix">
+            
+            
+            
+                <%  HttpSession sessao = request.getSession();
+                    
+                    if(sessao.getAttribute("id") == null){
+                %>
+                        <div class="row clearfix">
                 <div class="col-md-4 column centralizado">
 
                     
                     
 			<form role="form" action="./ServletLogin">
 				<div class="form-group">
-					 <label for="exampleInputEmail1">Email</label><input type="email" class="form-control" id="email" />
+                                    <label for="email">Email</label>
+                                    <input class="form-control" id="email" name="email" type="email" />
 				</div>
+                            
 				<div class="form-group">
-					 <label for="exampleInputPassword1">Senha</label><input type="password" class="form-control" id="senha" />
+                                    <label for="senha">Senha</label>
+                                    <input class="form-control" id="senha" name="senha" type="password" />
 				</div>
-                                 <button type="submit" class="btn btn-default">Login</button>
+                            
+                                <button type="submit" class="btn btn-default">Login</button>
+                                <br>
+                                <br><br>
+                                <a href="cadastro.jsp">ou cadastre-se</a>
 			</form>
                             
                             
                 </div>
             </div>
+                        <%
+                    }else{
+                    
+                    %>
+                    Bem vindo(a) <%=sessao.getAttribute("nome")%>
+                    
+                    
+                    
+                    <br><br><br><br>
+                <fieldset>
+                            	
+                            <form action="./ServletSair" >
+
+                                
+
+                                <input name="sair" type="submit" value="Sair"/>
+
+                            </form>						
+                        </fieldset>
+                    <%
+                    }
+            
+                %>
+                
+            
+            
+            
+            
         </div>
     
         
