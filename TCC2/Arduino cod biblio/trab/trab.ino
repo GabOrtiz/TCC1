@@ -1,3 +1,5 @@
+
+
 #include <IRremote.h>
 #include <IRremoteInt.h>
 
@@ -154,32 +156,16 @@ char c = Serial.read();
   }
 
 
-  
-  
-  
-
   if (c == 't'){
-    String u = ("Umidade(%): "+(DHT11.getHumidity(), 2));
-    String t = ("Temperatura(C): "+(DHT11.getCelsius(), 2));  
-    
-    char* tu[2];
-    tu.add(u);
-    
-    for (int i = 0; i < 2; i++){
-    Serial.write(tu[i]);
- 
-   }
-    
+    //String u = ("Umidade(%): "+(DHT11.getHumidity(), 2));
+    //String t = ("Temperatura(C): "+(DHT11.getCelsius(), 2));  
+  
+    Serial.print("Umidade: ");
+    Serial.print(DHT11.getHumidity(), 2);
+    Serial.print("Temperatura (c): ");
+    Serial.print(DHT11.getCelsius(), 2);
+   delay(500);
   }
-  
- 
-  
-  
 
-  //Serial.write(u);
-  //Serial.write(t);
-  
-
-  delay(500);
 
 }
