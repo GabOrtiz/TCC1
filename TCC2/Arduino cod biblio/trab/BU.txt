@@ -3,10 +3,10 @@
 #include <IRremote.h>
 #include <IRremoteInt.h>
 
-#include <idDHT11.h>  //inclus√£o da biblioteca
+#include <idDHT11.h>  //inclus„o da biblioteca
 
 
-//declara√ß√£o do pino do rel√©
+//declaraÁ„o do pino do relÈ
 int rele = 7;
 int estado = 1;
 
@@ -19,9 +19,9 @@ decode_results results;
 
 
 
-int idDHT11pin = 2;   //declara√ß√£o do pino do sensor  DHT11
+int idDHT11pin = 2;   //declaraÁ„o do pino do sensor  DHT11
 int idDHT11intNumber = 0; 
-void dht11_wrapper();   //declara√ß√£o
+void dht11_wrapper();   //declaraÁ„o
 
 
 //configurando lib
@@ -32,10 +32,10 @@ idDHT11 DHT11(idDHT11pin,idDHT11intNumber,dht11_wrapper);
 void setup(){
   pinMode(rele,OUTPUT);
   Serial.begin(9600);
-  //irrecv.enableIRIn(); // Start the receiver
+  irrecv.enableIRIn(); // Start the receiver
 }
 
-//o whrapper √© respons√°vel pela chamada
+//o whrapper È respons·vel pela chamada
 void dht11_wrapper() {
   DHT11.isrCallback();
 }
@@ -103,7 +103,7 @@ char c = Serial.read();
   
   
   if (irrecv.decode(&results)) {
-    //Serial.print(results.value, DEC);
+    Serial.print(results.value, DEC);
     if(results.value == 2672){
       //2704 power
       if (estado == 1){
